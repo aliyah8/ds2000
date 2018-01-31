@@ -121,4 +121,13 @@ def main():
     dates3 = readDates("dates3.txt")
     print(areValidDates(dates3))    
     
+    # the text file with valid consecutive dates with December31 and January1
+    dates4 = readDates("dates4.txt")
+    print(areValidDates(dates4))    
+    
+    #the file with invalid dates
+    dates5 = readDates("dates5.txt")
+    print(areValidDates(dates5))    
+    
+    
 main()
