@@ -1,3 +1,5 @@
+# Aliya Tyshkanbayeva
+# Homework 2 
 def readDates(filename):
     dateList = []
     file = open(filename)
@@ -21,7 +23,7 @@ def getYear(date):
 def getDay(date):
     return date%100
 
-
+#calculates the last day of the given date
 def lastDay(date):
     lastDay = 31
     if(getMonth(date) == 2 and isLeap(getYear(date)) == True):
@@ -33,7 +35,7 @@ def lastDay(date):
         lastDay = 30
     return lastDay
 
-
+# checks if the year is leap
 def isLeap(year):
     leap = False
     if((year % 400) == 0):
@@ -45,20 +47,26 @@ def isLeap(year):
     return leap
 
  
+# the function to check validity of list of dates in the txt file 
 def areValidDates(dateList):
+    # first we need to check that the each date in datelist is valid
     for date in dateList:
         if(not isValidDate(date)):
             return False
-
+    # second we are running a loop for each date and checking 
+    # if they are consecutive
     for i in range(0, len(dateList)-1, 1):
-        isValid = True
+        # years are the same, months are the same and days are not consecutive
         if(((getYear(dateList[i])==getYear(dateList[i+1])) 
             and (getMonth(dateList[i]) == getMonth(dateList[i+1])) 
              and (getDay(dateList[i+1]) - getDay(dateList[i]) != 1))):
             return False
+        # years are the same, months are consecutive, but days are not
         if((getYear(dateList[i]) == getYear(dateList[i+1])) and (getMonth(dateList[i+1]) - getMonth(dateList[i]) == 1)
            and (getDay(dateList[i]) == lastDay(dateList[i])) and (getDay(dateList[i+1]) != 1)):
             return False
+        # years are consecutive, months are december and january, but dates 
+        # are not consecutive
         if((getYear(dateList[i+1])-getYear(dateList[i]) == 1) and (getMonth(dateList[i]) == 12 and getMonth(dateList[i+1]) == 1) 
            and (getDay(dateList[i]) == 31 and getDay(dateList[i+1]) != 1)):
             return False
@@ -68,11 +76,12 @@ def areValidDates(dateList):
 def isInRange(date):
     return (date >= 17520914 and date <= 20180117)
 
+# checks if the month is valid
 def isValidMonth(date):
     month = getMonth(date)
     return (month >= 1 and month <= 12)
 
-
+# checks if the day is Valid
 def isValidDay(date):
     
     year = getYear(date)
@@ -93,19 +102,22 @@ def isValidDay(date):
     else:
         return False
 
-
+# check is the whole date is valid
 def isValidDate(date):
     return (isInRange(date) and isValidMonth(date) and isValidDay(date))
 
 
 
 def main():
+    #the txt file with consecutive dates
     dates = readDates("dates.txt")
     print(areValidDates(dates))
     
+    #the file which has non-consecutive dates
     dates2 = readDates("dates2.txt")
     print(areValidDates(dates2))
     
+    #the file with non-consecutive dates
     dates3 = readDates("dates3.txt")
     print(areValidDates(dates3))    
     
