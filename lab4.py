@@ -12,6 +12,18 @@ def getMonth(date):
 def getDay(date):
     return date % 100
 
+def readFiles(filename):
+    dateList = []
+    file = open(filename)
+    for line in filename:
+        splitlist = []
+        splitlist.append(int(line.split[0]))
+        splitlist.append(int(line.split[1]))
+        dateList.append(splitList)
+    file.close()
+    return dateList
+        
+    
 
 def main():
     hYears = readFile("lab4temps.txt")
