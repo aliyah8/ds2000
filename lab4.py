@@ -12,17 +12,26 @@ def getMonth(date):
 def getDay(date):
     return date % 100
 
-def readFiles(filename):
+def readFile(filename):
     dateList = []
     file = open(filename)
-    for line in filename:
+    for line in file:
         splitlist = []
-        splitlist.append(int(line.split[0]))
-        splitlist.append(int(line.split[1]))
-        dateList.append(splitList)
+        l = line.split()
+        splitlist.append(int(l[0]))
+        splitlist.append(int(l[1]))
+        dateList.append(splitlist)
     file.close()
     return dateList
-        
+
+def listHotYears(dateList):
+    listYears=[]
+    for i in dateList:
+        if i[1]>=100:
+            listYears.append(getYear(i[0]))
+    listYears = set(listYears)
+    listYears = list(listYears)
+    return listYears
     
 
 def main():
