@@ -10,9 +10,9 @@ def readGround(fileName):
     file = open(fileName)
     for line in file:
         l = line.split()        
-        if(l[1]=="Full" and (int(l[0]) > 1936)):
+        if(l[1]=="Full" and (int(l[0]) >= 1936)):
             shadowTable[int(l[0])] = True
-        if(l[1]=="No" and l[2]=="Shadow" and (int(l[0]) > 1936)):
+        if(l[1]=="No" and l[2]=="Shadow" and (int(l[0]) >= 1936)):
             shadowTable[int(l[0])] = False
     file.close()
     print(shadowTable)
