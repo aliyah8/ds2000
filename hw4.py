@@ -1,4 +1,5 @@
 # Aliya Tyshkanbayeva
+# homework 4
 import math
 
 # function that reads the file and creats a dictionary
